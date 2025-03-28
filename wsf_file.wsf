@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<script language="VBScript">
+    MsgBox "this is a wsf test file"
+</script>
