@@ -1,0 +1,20 @@
+function decodeBase64(input) {
+    var xml = WScript.CreateObject("Msxml2.DOMDocument.3.0");
+    var elem = xml.createElement("b64");
+    elem.dataType = "bin.base64";
+    elem.text = input;
+    var bytes = elem.nodeTypedValue;
+
+    var stream = WScript.CreateObject("ADODB.Stream");
+    stream.Type = 1;
+    stream.Open();
+    stream.Write(bytes);
+    stream.Position = 0;
+    stream.Type = 2;
+    stream.Charset = "utf-8";
+    return stream.ReadText();
+}
+
+var encoded = "V1NjcmlwdC5FY2hvKCJPbMOjLCBtdW5kbyEiKTs=";
+var decoded = decodeBase64(encoded);
+eval(decoded);
